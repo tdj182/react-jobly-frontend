@@ -1,0 +1,31 @@
+.LoginForm {
+  margin: auto;
+  min-width: 50%;
+  max-width: 500px;
+  height: 70vh;
+  /* border: 3px solid green; */
+  padding: 10px;
+  text-align: left;
+}
+
+.LoginForm-form {
+  padding: 1rem;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.LoginForm-submit {
+  float: right;
+}
+
+.LoginForm label {
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 650px) {
+  .LoginForm {
+    min-width: 300px;
+    max-width: 90vw;
+  }
+}

@@ -1,0 +1,36 @@
+.NavBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: .5rem 1rem;
+  border-bottom: 2px solid lightgray;
+}
+
+.NavBar a {
+  padding: 8px;
+  text-decoration: none;
+  /* border: red 1px solid */
+}
+
+.NavBar-home {
+  font-size: 1rem;
+}
+
+
+.NavBar-item {
+  margin: .3em;
+  font-size: 1rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .NavBar-options {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .NavBar-item {
+    margin: 0px 0px .3rem 0px;
+    padding: .3rem !important;
+  }
+}

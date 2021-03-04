@@ -1,0 +1,31 @@
+.Profile {
+  margin: auto;
+  min-width: 50%;
+  max-width: 500px;
+  height: 70vh;
+  /* border: 3px solid green; */
+  padding: 10px;
+  text-align: left;
+}
+
+.Profile-form {
+  padding: 1rem;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.Profile-submit {
+  float: right;
+}
+
+.Profile label {
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 650px) {
+  .Profile {
+    min-width: 300px;
+    max-width: 90vw;
+  }
+}

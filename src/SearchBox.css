@@ -1,0 +1,12 @@
+.SearchBox {
+  margin-top: 1rem;
+}
+.SearchBox .form-group {
+  width: 100%;
+  margin: 0;
+}
+
+
+.SearchBox-form {
+  display: flex;
+}

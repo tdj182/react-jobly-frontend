@@ -1,0 +1,16 @@
+.CompanyCard {
+  text-align: left;
+  text-decoration: none;
+  color: black;
+  margin: 1rem 0;
+}
+
+.CompanyCard-card-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.CompanyCard-card-top img {
+  width: 50px;
+}
+

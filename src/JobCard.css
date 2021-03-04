@@ -1,0 +1,12 @@
+.JobCard {
+  text-align: left;
+  text-decoration: none;
+  color: black;
+  margin: 1rem 0;
+  /* overflow: hidden; */
+}
+
+.JobCard-button {
+  width: 75px;
+  float: right;
+}
