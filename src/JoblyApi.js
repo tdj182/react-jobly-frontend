@@ -79,7 +79,6 @@ class JoblyApi {
 
   /** Login returns a token */
   static async login(data) {
-    console.log('in api: ', data)
     let res = await this.request(`auth/token`, data, "post");
     return res.token;
   }
@@ -92,8 +91,10 @@ class JoblyApi {
 
   /** Save changes to profile */
   static async saveChanges(username, data) {
-    console.log('in api: ', data)
+    console.log(username)
+    console.log('in JoblyApi: ', data)
     let res = await this.request(`users/${username}`, data, "patch");
+    console.log(res)
     return res.user
   }
 }

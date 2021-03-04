@@ -9,6 +9,7 @@ import Routes from './Routes'
 function App() {
   const [currUser, setCurrUser] = useState(null);
   const [token, setToken] = useState(localStorage.getItem('token'));
+  // const [appliedJobs, setAppliedJobs] = useState(new Set([]))
 
 
   useEffect(() => {
@@ -18,6 +19,7 @@ function App() {
           JoblyApi.token = token
           let {username} = jwt.decode(token)
           setCurrUser(await JoblyApi.getUser(username))
+          // setAppliedJobs(new Set(username.applications))
         } catch (e) {
           console.log(`Error: ${e}`)
         }
@@ -58,22 +60,22 @@ function App() {
     localStorage.setItem('token', null)
   }
 
-  async function saveChanges(data) {
-    console.log(data)
-    try {
-      let user = await JoblyApi.saveChanges(currUser.username, data);
-      console.log(user)
-      return { success: true };
-    } catch (e) {
-      console.error(`Error: ${e}`);
-      return e;
-    }
-  }
+  // async function saveChanges(data) {
+  //   console.log(data)
+  //   try {
+  //     let user = await JoblyApi.saveChanges(currUser.username, data);
+  //     console.log(user)
+  //     return { success: true };
+  //   } catch (e) {
+  //     console.error(`Error: ${e}`);
+  //     return e;
+  //   }
+  // }
 
   return (
     <div className="App">
       <UserContext.Provider value={{currUser, setCurrUser}}>
-        <Routes login={login} signup={signup} logout={logout} saveChanges={saveChanges}/>
+        <Routes login={login} signup={signup} logout={logout}/>
       </UserContext.Provider>
     </div>
   );

@@ -10,7 +10,7 @@ import UserContext from "./UserContext";
 import CompanyDetails from './CompanyDetails'
 import { Route, Switch, Redirect, BrowserRouter } from "react-router-dom";
 
-function Routes({login, signup, logout, saveChanges}) {
+function Routes({login, signup, logout}) {
   const { currUser } = useContext(UserContext);
 
   return (
@@ -38,7 +38,7 @@ function Routes({login, signup, logout, saveChanges}) {
           {currUser ? <JobList />  : <Redirect to='./login'/>} 
         </Route>
         <Route exact path="/profile"> 
-          {currUser ? <Profile saveChanges={saveChanges}/>  : <Redirect to='./login'/>} 
+          {currUser ? <Profile />  : <Redirect to='./login'/>} 
         </Route>
         <Redirect to="/" />
       </Switch>

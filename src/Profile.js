@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
-import { useHistory } from "react-router-dom";
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import {JoblyApi} from './JoblyApi'
 import UserContext from './UserContext'
 import 'bootstrap/dist/css/bootstrap.css';
 import './Profile.css'
@@ -8,8 +8,7 @@ import './Profile.css'
 /** Login form.
  *
  */
-function Profile({ saveChanges }) {
-  const history = useHistory();
+function Profile() {
   const { currUser, setCurrUser } = useContext(UserContext);
 
   const [form, setFormData] = useState({
@@ -30,11 +29,19 @@ function Profile({ saveChanges }) {
   async function handleSubmit(e) {
     e.preventDefault();
     let updatedUser
+    // try {
+    //   updatedUser = await saveChanges(form)
+    // } catch (e) {
+    //   console.log(e)
+    //   return
+    // }
+
     try {
-      updatedUser = await saveChanges(currUser.username, form)
+      let user = await JoblyApi.saveChanges(currUser.username, form);
+      console.log(user)
     } catch (e) {
-      console.log(e)
-      return
+      console.error(`Error: ${e}`);
+      return e;
     }
 
     setFormData(f => ({ ...f, password: "" }));
