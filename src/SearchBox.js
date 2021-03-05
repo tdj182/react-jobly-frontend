@@ -17,7 +17,7 @@ function SearchBox({ searchInput }) {
   async function handleSubmit(e) {
     e.preventDefault();
     console.log(input)
-    searchInput(input.trim());
+    searchInput(input.trim() || undefined);
   }
 
 
@@ -31,10 +31,10 @@ function SearchBox({ searchInput }) {
             type="text"
             onChange={handleChange}
             value={input}
-            required
+            // required
           />
         </FormGroup>
-        <Button className="SearchBox-submit">Search</Button>
+        <Button className="SearchBox-submit" color="primary">Search</Button>
       </Form>
     </div>
   );

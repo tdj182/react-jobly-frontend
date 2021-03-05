@@ -23,6 +23,11 @@
   font-size: 1rem;
 }
 
+.selected {
+  font-weight: bold;
+  color: black;
+}
+
 @media only screen and (max-width: 600px) {
   .NavBar-options {
     display: flex;

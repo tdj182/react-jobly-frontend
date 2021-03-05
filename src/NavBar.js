@@ -10,10 +10,10 @@ function NavBar({logout}) {
     if (!currUser) {
       return (
         <div className="NavBar-options">
-          <NavLink className="NavBar-item" exact to="/login">
+          <NavLink className="NavBar-item" activeClassName="selected" exact to="/login">
             Login
           </NavLink>
-          <NavLink className="NavBar-item" exact to="/signup">
+          <NavLink className="NavBar-item" activeClassName="selected" exact to="/signup">
             Signup
           </NavLink>
         </div>
@@ -21,16 +21,16 @@ function NavBar({logout}) {
     } else {
       return (
         <div className="NavBar-options">
-          <NavLink className="NavBar-item" exact to="/companies">
+          <NavLink className="NavBar-item" activeClassName="selected" exact to="/companies">
             Companies
           </NavLink>
-          <NavLink className="NavBar-item" exact to="/jobs">
+          <NavLink className="NavBar-item" activeClassName="selected" exact to="/jobs">
             Jobs
           </NavLink>
-          <NavLink className="NavBar-item" exact to="/profile">
+          <NavLink className="NavBar-item" activeClassName="selected" exact to="/profile">
             Profile
           </NavLink>
-          <NavLink className="NavBar-item" exact to="/" onClick={logout}>
+          <NavLink className="NavBar-item" activeClassName="selected" exact to="/" onClick={logout}>
             Log out {currUser.username}
           </NavLink>
         </div>

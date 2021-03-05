@@ -31,7 +31,8 @@ function SignupForm({ signup }) {
     if (res.success) {
       history.push("/companies");
     } else {
-      console.log(res.errors)
+      console.log(res)
+      alert(res)
     }
   }
 
@@ -97,7 +98,7 @@ function SignupForm({ signup }) {
             required
           />
         </FormGroup>
-        <Button className="SignupForm-submit">Submit</Button>
+        <Button className="SignupForm-submit" color="primary">Submit</Button>
       </Form>
     </div>
   );

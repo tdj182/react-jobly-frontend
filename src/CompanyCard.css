@@ -8,9 +8,10 @@
 .CompanyCard-card-top {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .CompanyCard-card-top img {
-  width: 50px;
+  max-width: 60px;
 }
 

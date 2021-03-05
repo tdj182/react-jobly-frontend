@@ -5,9 +5,6 @@ import UserContext from './UserContext'
 import 'bootstrap/dist/css/bootstrap.css';
 import './Profile.css'
 
-/** Login form.
- *
- */
 function Profile() {
   const { currUser, setCurrUser } = useContext(UserContext);
 
@@ -29,16 +26,10 @@ function Profile() {
   async function handleSubmit(e) {
     e.preventDefault();
     let updatedUser
-    // try {
-    //   updatedUser = await saveChanges(form)
-    // } catch (e) {
-    //   console.log(e)
-    //   return
-    // }
-
+    
     try {
-      let user = await JoblyApi.saveChanges(currUser.username, form);
-      console.log(user)
+      updatedUser = await JoblyApi.saveChanges(currUser.username, form);
+      console.log(updatedUser)
     } catch (e) {
       console.error(`Error: ${e}`);
       return e;
@@ -47,8 +38,6 @@ function Profile() {
     setFormData(f => ({ ...f, password: "" }));
     setCurrUser(updatedUser)
   }
-
-  const {password, firstName, lastName, email} = form;
 
 
   return (
@@ -66,7 +55,7 @@ function Profile() {
             id="firstName"
             type="text"
             onChange={handleChange}
-            value={firstName}
+            value={form.firstName}
             required
           />
         </FormGroup>
@@ -77,7 +66,7 @@ function Profile() {
             id="lastName"
             type="text"
             onChange={handleChange}
-            value={lastName}
+            value={form.lastName}
             required
           />
         </FormGroup>
@@ -88,7 +77,7 @@ function Profile() {
             id="email"
             type="email"
             onChange={handleChange}
-            value={email}
+            value={form.email}
             required
           />
         </FormGroup>
@@ -99,7 +88,7 @@ function Profile() {
             id="password"
             type="password"
             onChange={handleChange}
-            value={password}
+            value={form.password}
             required
           />
           </FormGroup>

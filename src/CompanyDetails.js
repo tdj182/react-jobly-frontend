@@ -32,7 +32,6 @@ function CompanyDetails() {
   }, [handle]);
 
   function buildCompany(company) {
-    console.log(company.jobs)
     return (
       <div className="CompanyDetails">
         <Card className="CompanyDetails-card">

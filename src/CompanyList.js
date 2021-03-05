@@ -30,7 +30,6 @@ function CompanyList() {
 
   async function companySearch(name) {
     let companies = await JoblyApi.getCompanies(name);
-    console.log(companies)
     setCompanies(companies)
   }
 

@@ -1,4 +1,4 @@
-import {useContext} from 'react'
+import React from 'react'
 import LoginForm from "./LoginForm"
 import SignupForm from "./SignupForm"
 import Profile from "./Profile"
@@ -6,13 +6,10 @@ import NavBar from './NavBar'
 import Home from './Home'
 import CompanyList from './CompanyList'
 import JobList from './JobList'
-import UserContext from "./UserContext";
 import CompanyDetails from './CompanyDetails'
 import { Route, Switch, Redirect, BrowserRouter } from "react-router-dom";
 
 function Routes({login, signup, logout}) {
-  const { currUser } = useContext(UserContext);
-
   return (
     <BrowserRouter>
       <NavBar logout={logout}/>
@@ -29,16 +26,16 @@ function Routes({login, signup, logout}) {
         
         {/* These routes need authorization  */}
         <Route exact path="/companies"> 
-          {currUser ? <CompanyList /> : <Redirect to='./login'/>}
+          {localStorage.getItem('token') !== 'null' ? <CompanyList /> : <Redirect to='./login'/>}
         </Route>
         <Route exact path="/companies/:handle">
-          {currUser ? <CompanyDetails /> : <Redirect to='./login'/>} 
+          {localStorage.getItem('token') !== 'null' ? <CompanyDetails /> : <Redirect to='./login'/>} 
         </Route>
         <Route exact path="/jobs"> 
-          {currUser ? <JobList />  : <Redirect to='./login'/>} 
+          {localStorage.getItem('token') !== 'null' ? <JobList />  : <Redirect to='./login'/>} 
         </Route>
         <Route exact path="/profile"> 
-          {currUser ? <Profile />  : <Redirect to='./login'/>} 
+          {localStorage.getItem('token') !== 'null' ? <Profile />  : <Redirect to='./login'/>} 
         </Route>
         <Redirect to="/" />
       </Switch>

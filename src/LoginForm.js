@@ -26,6 +26,7 @@ function LoginForm({ login }) {
       history.push("/companies");
     } else {
       console.log(res)
+      alert(res)
     }
   }
 
@@ -58,7 +59,7 @@ function LoginForm({ login }) {
             required
           />
         </FormGroup>
-        <Button className="LoginForm-submit">Submit</Button>
+        <Button className="LoginForm-submit" color="primary">Submit</Button>
       </Form>
     </div>
   );

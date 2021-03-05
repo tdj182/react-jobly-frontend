@@ -9,17 +9,20 @@ import Routes from './Routes'
 function App() {
   const [currUser, setCurrUser] = useState(null);
   const [token, setToken] = useState(localStorage.getItem('token'));
-  // const [appliedJobs, setAppliedJobs] = useState(new Set([]))
+  const [appliedJobs, setAppliedJobs] = useState(new Set([]))
 
 
   useEffect(() => {
     async function getCurrUser() {
-      if (token) {
+      if (token === "null" || token === null ){
+        return
+      } else {
         try {
           JoblyApi.token = token
           let {username} = jwt.decode(token)
-          setCurrUser(await JoblyApi.getUser(username))
-          // setAppliedJobs(new Set(username.applications))
+          let currUser = await JoblyApi.getUser(username)
+          setCurrUser(currUser)
+          setAppliedJobs(new Set(currUser.applications))
         } catch (e) {
           console.log(`Error: ${e}`)
         }
@@ -37,7 +40,6 @@ function App() {
       return { success: true };
     } catch (e) {
       console.error(`Error: ${e}`);
-      alert("Error: check password and username")
       return e;
     }
   }
@@ -45,8 +47,8 @@ function App() {
   async function signup(data) {
     try {
       let token = await JoblyApi.signup(data);
-      setToken(token);
       localStorage.setItem('token', token)
+      setToken(token);
       return { success: true };
     } catch (e) {
       console.error(`Error: ${e}`);
@@ -60,21 +62,20 @@ function App() {
     localStorage.setItem('token', null)
   }
 
-  // async function saveChanges(data) {
-  //   console.log(data)
-  //   try {
-  //     let user = await JoblyApi.saveChanges(currUser.username, data);
-  //     console.log(user)
-  //     return { success: true };
-  //   } catch (e) {
-  //     console.error(`Error: ${e}`);
-  //     return e;
-  //   }
-  // }
+  function hasAlreadyApplied(id) {
+    return appliedJobs.has(id)
+  }
+
+  function applyToJob(id) {
+    if (!hasAlreadyApplied(id)) {
+      JoblyApi.applyToJob(currUser.username, id);
+      setAppliedJobs(new Set([...appliedJobs, id]))
+    } 
+  }
 
   return (
     <div className="App">
-      <UserContext.Provider value={{currUser, setCurrUser}}>
+      <UserContext.Provider value={{currUser, setCurrUser, hasAlreadyApplied, applyToJob}}>
         <Routes login={login} signup={signup} logout={logout}/>
       </UserContext.Provider>
     </div>
