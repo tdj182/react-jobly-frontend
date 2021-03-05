@@ -9,7 +9,7 @@ import './LoginForm.css'
  */
 function LoginForm({ login }) {
   const history = useHistory();
-  const [form, setFormData] = useState({username: "testadmin", password:"password"});
+  const [form, setFormData] = useState({username: "", password:""});
 
   const handleChange = e => {
     const { name, value } = e.target;
