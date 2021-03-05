@@ -3,6 +3,14 @@ import { NavLink } from "react-router-dom";
 import UserContext from "./UserContext";
 import "./NavBar.css";
 
+/** NavBar Component
+ * Passed a logout function 
+ * 
+ * Load login/signup if not logged in
+ * 
+ * If logged in, pass the logout function to the correct link
+ */
+
 function NavBar({logout}) {
   const { currUser } = useContext(UserContext);
 

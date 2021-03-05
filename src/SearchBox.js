@@ -5,6 +5,7 @@ import './SearchBox.css'
 
 /** Search box.
  *
+ * is passed a function to determine  the type of search
  */
 function SearchBox({ searchInput }) {
   const [input, setInput] = useState("");
@@ -14,6 +15,7 @@ function SearchBox({ searchInput }) {
     setInput(value)
   }
 
+  // search with input as param or no param if nothing is passed.
   async function handleSubmit(e) {
     e.preventDefault();
     console.log(input)

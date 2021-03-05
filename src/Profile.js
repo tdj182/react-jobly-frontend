@@ -5,6 +5,15 @@ import UserContext from './UserContext'
 import 'bootstrap/dist/css/bootstrap.css';
 import './Profile.css'
 
+/** Profile 
+ *
+ * Pulls currUser data and places it within the form.
+ *  
+ * Will call API to change the users data when form is submitted
+ * 
+ * routed at /profile
+ *
+ */
 function Profile() {
   const { currUser, setCurrUser } = useContext(UserContext);
 

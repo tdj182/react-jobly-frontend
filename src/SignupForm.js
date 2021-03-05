@@ -4,7 +4,7 @@ import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import './SignupForm.css'
 
-/** Login form.
+/** Signup form.
  *
  */
 function SignupForm({ signup }) {
@@ -25,6 +25,9 @@ function SignupForm({ signup }) {
     }))
   }
 
+  /** Handle form submit
+   * Will signup and push to companies if all fields are okay
+   */
   async function handleSubmit(e) {
     e.preventDefault();
     let res = await signup(form)

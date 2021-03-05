@@ -9,19 +9,16 @@ import JobCard from './JobCard'
 import 'bootstrap/dist/css/bootstrap.css';
 import './CompanyDetails.css'
 
-/** Shows details of a specific company.
+/** Shows details of a company.
  *
- * On mount, loads companies from API.
- * Re-loads filtered companies on submit from search form.
+ * routes to company/handle
  *
- * This is routed to at /companies
- *
- * Routes -> { CompanyCard, SearchForm }
+ * handle: variable used to call the api to retrieve the correct company
+ * company: set based on handle and uses this info to display the correct info
  */
 
 function CompanyDetails() {
   const {handle} = useParams();
-
   const [company, setCompany] = useState(null);
 
   useEffect(() => {
@@ -58,7 +55,6 @@ function CompanyDetails() {
   return(
     <div>
       {company ? buildCompany(company) : "loading.."}
-      {/* We made it: {handle} */}
     </div>
 
   )

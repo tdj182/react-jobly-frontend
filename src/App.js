@@ -5,6 +5,14 @@ import UserContext from "./UserContext";
 import jwt from "jsonwebtoken";
 import Routes from './Routes'
 
+/** Jobly App
+ * 
+ * -currUser keeps track of the current user logged in
+ * 
+ * -Token keeps track of the token that is passed along with login/signup
+ * 
+ * -appliedJobs will be pulled from the currUser's info
+ */
 
 function App() {
   const [currUser, setCurrUser] = useState(null);
@@ -12,6 +20,10 @@ function App() {
   const [appliedJobs, setAppliedJobs] = useState(new Set([]))
 
 
+  //Make adjustments to the currUser/token if token is ever adjusted
+  //Login
+  //Signup
+  //Logout
   useEffect(() => {
     async function getCurrUser() {
       if (token === "null" || token === null ){
@@ -31,7 +43,10 @@ function App() {
     getCurrUser();
   }, [token])
   
-  /** Login function */
+  /** Login function 
+   * gets token and sets it in the local storage
+   * will call the useEffect function to adjust currUser/token
+  */
   async function login(data) {
     try {
       let token = await JoblyApi.login(data);
@@ -44,6 +59,10 @@ function App() {
     }
   }
 
+  /** signup function 
+   * gets token and sets it in the local storage
+   * will call the useEffect function to adjust currUser/token
+   */
   async function signup(data) {
     try {
       let token = await JoblyApi.signup(data);
@@ -56,16 +75,21 @@ function App() {
     }
   }
 
+  /** logout
+  * clears the token and currUser
+  */
   async function logout() {
     setToken(null);
     setCurrUser(null);
     localStorage.setItem('token', null)
   }
 
+  /** Checks to see if job has already been applied for*/
   function hasAlreadyApplied(id) {
     return appliedJobs.has(id)
   }
 
+  /** Will apply to job only if not already applied for(uses function above) */
   function applyToJob(id) {
     if (!hasAlreadyApplied(id)) {
       JoblyApi.applyToJob(currUser.username, id);

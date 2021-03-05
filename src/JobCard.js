@@ -7,6 +7,12 @@ import {
 import 'bootstrap/dist/css/bootstrap.css';
 import './JobCard.css'
 
+/**Card made for each job
+ * 
+ * hasAlreadyApplied, applyToJob are passed from context. (can be found on App.js)
+ * 
+ * isApplied will be used in the rendering process to determine text and if button is clickable
+ */
 function JobCard({id, title, salary, equity, companyName}) {
 
   const { hasAlreadyApplied, applyToJob } = useContext(UserContext);

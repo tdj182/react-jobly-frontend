@@ -8,6 +8,10 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './CompanyCard.css'
 import logo from './logos/logo1.png'
 
+/** Will build a card for each company
+ * 
+ * links to company details page
+ */
 
 function CompanyCard({handle, name, logoUrl, description}) {
   return (

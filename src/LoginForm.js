@@ -19,6 +19,9 @@ function LoginForm({ login }) {
     }))
   }
 
+  /** Handle form submit
+   * Will push to companies page if all goes smoothly
+   */
   async function handleSubmit(e) {
     e.preventDefault();
     let res = await login(form)
